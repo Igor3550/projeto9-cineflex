@@ -1,0 +1,368 @@
+body {
+  font-family: Roboto;
+  font-weight: 300;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #FAFAFA;
+}
+
+.pagina {
+  background-color: #FAFAFA;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  width: 100%;
+}
+.area-topo {
+  width: 100%;
+  height: 55px;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  border: 1px solid #DBDBDB;
+}
+.topo {
+  display: flex;
+  width: 935px;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 10px;
+}
+.borda {
+  border-left: 1px solid #DBDBDB;
+  padding-left: 10px;
+}
+.logo img {
+  height: 22px;
+  margin-right: 10px;
+}
+.logo ion-icon {
+  font-size: 22px;
+  margin-right: 10px;
+}
+.topo input {
+  height: 25px;
+  width: 215px;
+  text-align: center;
+  background-color: #FAFAFA;
+  border: 1px solid #DBDBDB;
+  border-radius: 3px;
+}
+.icones-topo ion-icon{
+  font-size: 22px;
+  margin-left: 25px;
+}
+.icones-topo {
+  margin-right: 10px;
+}
+.container {
+  max-width: 616px;
+  min-width: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 55px;
+}
+.sidebar {
+  width: 293px;
+  height: 500px;
+  margin-top: 88px;
+  margin-left: 28px;
+}
+.caixa-user{
+  display: flex;
+  align-items: center;
+  height: 100px;
+}
+.caixa-user p {
+  font-size: 12px;
+  font-weight: 400;
+  color: #8E8E8E; 
+}
+.caixa-user p:first-child{
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #262626;
+}
+.caixa-user img{
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+.caixa-sugestao div:first-child{
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  font-weight: 500;
+  color: #8E8E8E;
+  line-height: 14px;
+}
+.sugestao div{
+  align-items: center;
+}
+.sugestao{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.sugestao-info p:first-child{
+  font-size: 14px;
+  font-weight: 500;
+  color: #262626;
+  margin-bottom: 5px;
+}
+.caixa-sugestao {
+  width: 100%;
+}
+.caixa-sugestao img{
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+.caixa-sugestao div:first-child button{
+  background-color: rgba(0,0,0,0);
+  border: 0;
+  font-weight: bold;
+  font-size: 12px;
+  color: #262626;
+}
+.sugestao button{
+  background-color: rgba(0,0,0,0);
+  border: 0;
+  font-weight: bold;
+  font-size: 12px;
+  color: #139EF2;
+}
+.legenda-sidebar{
+  font-size: 11px;
+  font-weight: 400;
+  color: #C7C7C7;
+  margin: 20px 0px;
+}
+.storys {
+  width: 614px;
+  height: 120px;
+  margin: 0px 20px;
+  margin-top: 35px;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  border: 1px solid #DBDBDB;
+  overflow: hidden;
+  position: relative;
+}
+.story-image {
+  width: 66px;
+  height: 66px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.story {
+  width: 66px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 15px;
+  flex-direction: column;
+}
+
+.story img{
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  position: absolute;
+  object-fit: cover;
+}
+.story .background {
+  width: 66px;
+  height: 66px;
+}
+.story p{
+  margin-top: 5px;
+  font-size: 12px;
+  font-weight: 400;
+  color: #262626;
+  line-height: 14.06px;
+}
+.seta-storys {
+  width: 32px;
+  position: absolute;
+  right: 0;
+  z-index: 1;
+  border-radius: 50%;
+  display: flex;
+  margin-right: 8px;
+  align-items: center;
+  justify-content: center;
+}
+.seta-storys ion-icon {
+  font-size: 32px;
+  color: #ffffff;
+}
+.conteudo {
+  width: 100%;
+}
+.caixa-post {
+  max-width: 614px;
+  background-color: #ffffff;
+  border: 1px solid #DBDBDB;
+  margin-bottom: 60px;
+  margin-top: 24px;
+}
+.caixa-post .topo {
+  width: 100%;
+  height: 60px;
+}
+.post img{
+  width: 100%;
+  height: auto;
+}
+.post-profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.post-profile img{
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0px 15px;
+}
+.post-profile p{
+  font-size: 14px;
+  font-weight: 500;
+}
+.topo ion-icon {
+  margin: 0px 17px;
+}
+.caixa-post .rodape {
+  width: 100%;
+  height: 76px;
+  background-color: #ffffff;
+}
+.caixa-rodape-icones{
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+}
+.caixa-rodape-icones ion-icon{
+  font-size: 25px;
+  margin-left: 5px;
+}
+.curtido-caixa{
+  display: flex;
+  align-items: center;
+}
+.curtido-caixa img{
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0px 15px;
+}
+.curtido-caixa p{
+  font-size: 14px;
+}
+strong {
+  font-weight: 500;
+}
+.area-topo-mobile{
+  position: fixed;
+  top: 0;
+  left:0;
+  width: 100%;
+  height: 55px;
+  background-color: #fff;
+  z-index: 1;
+}
+.topo-mobile {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.area-topo-mobile img{
+  width: 20px;
+  height: auto;
+  margin: 0px 10px;
+}
+.area-topo-mobile ion-icon{
+  font-size: 22px;
+  margin: 0px 10px;
+}
+.topo-mobile div img{
+  width: auto;
+}
+.area-barra-inferior{
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: #ffffff;
+  z-index: 10;
+  border: 1px solid #DBDBDB;
+}
+.area-barra-inferior ion-icon{
+  font-size: 20px;
+  margin: 0px 20px;
+}
+
+.likedHeart {
+  color: red;
+}
+
+button,.sugestao-info, .story, ion-icon:hover {
+  cursor: pointer;
+}
+
+@media (max-width: 935px){
+  .sidebar {
+    display: none;
+  }
+}
+@media (max-width: 614px){
+  .area-topo{
+    display: none;
+  }
+  .seta-storys{
+    display: none;
+  }
+  .storys {
+    width: 100%;
+    margin-top: 0px;
+    background-color: rgba(0,0,0,0);
+    border-bottom: 0px;
+    border-right: 0px;
+  }
+  .caixa-post {
+    margin-top: 0px;
+  }
+}
+@media (min-width: 615px) {
+  .area-topo-mobile {
+    display: none;
+  }
+  .area-barra-inferior {
+    display: none;
+  }
+}
