@@ -36,11 +36,65 @@ const SectionPage = () => {
             <p>Indisponível</p>
           </div>
         </DemonstrationSeats>
+
+        <FormArea>
+          <form>
+            <label for='name'>Nome do comprador:</label>
+            <input type='text' id='name' placeholder="Digite seu nome..." />
+            <label for='cpf'>CPF do comprador:</label>
+            <input type='number' id='cpf' placeholder="Digite seu CPF..."/>
+            <button>Resesrvar assento(s)</button>
+          </form>
+        </FormArea>
+
       </Container>
       <StatusBar dateDescription="Quinta-feira 15:00"/>
     </>
   )
 }
+
+const FormArea = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  label {
+    margin: 5px 0;
+  }
+
+  input {
+    height: 50px;
+    padding: 10px;
+
+    font-size: 18px;
+    border: 1px solid #D4D4D4;
+    margin-bottom: 10px;
+
+    &::placeholder {
+      font-style: italic;
+    }
+  }
+
+  button {
+    width: 225px;
+    height: 40px;
+    background-color: #E8833A;
+
+    text-align: center;
+    margin: auto;
+    margin-top: 30px;
+
+    border: 0;
+    border-radius: 3px;
+    font-size: 18px;
+    color: white;
+  }
+`;
 
 const Container = styled.div`
   width: 100%;
@@ -110,7 +164,6 @@ const DemonstrationSeats = styled.div`
   @media (max-width: 319px){
     width: 80%;
   }
-
 `;
 
 export default SectionPage;
