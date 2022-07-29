@@ -16,7 +16,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/filme" element={<SelectedFilmPage />} />
+          <Route path="/filme/:filmId" element={<SelectedFilmPage />} />
           <Route path="/sessao" element={<SectionPage />} />
           <Route path="/sucesso" element={<SuccesPage />} />
         </Routes>

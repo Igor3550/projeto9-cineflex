@@ -1,7 +1,15 @@
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import StatusBar from "../StatusBar";
+import { useParams } from "react-router-dom";
 
 const SelectedFilmPage = () => {
+
+  const [listSections, setListSections] = useState([])
+
+  const { filmId } = useParams();
+  console.log(filmId)
+
   return (
     <>
     <Container>
