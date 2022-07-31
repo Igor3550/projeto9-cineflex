@@ -1,33 +1,46 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import StatusBar from "../StatusBar";
-import { useParams } from "react-router-dom";
+import axios from "axios";
+import { Link, useParams } from "react-router-dom";
 
 const SelectedFilmPage = () => {
 
-  const [listSections, setListSections] = useState([])
+  const [filmInfo, setFilmInfo] = useState({})
 
   const { filmId } = useParams();
-  console.log(filmId)
+
+  useEffect(() => {
+    const promisse = axios.get(`https://mock-api.driven.com.br/api/v7/cineflex/movies/${filmId}/showtimes`);
+    promisse.catch((error) => {
+      console.log('Ouve um erro:', error);
+    })
+    promisse.then((res) => {
+      console.log(res.data);
+      setFilmInfo(res.data);
+    })
+  }, [])
+
+  const Section = ({ weekDay, date, showTimes }) => {
+    return (
+      <div>
+        <p>{weekDay} {date}</p>
+       {showTimes.map(time => <Link key={time.id} to={`/sessao/${time.id}`}><button>{time.name}</button></Link>)}
+      </div>
+    )
+  }
 
   return (
     <>
     <Container>
       <h1>Selecione o horário</h1>
-      <div>
-        <p>Quinta-feira 24-06-2022</p>
-        <button>15:00</button>
-        <button>19:00</button>
-      </div>
-      <div>
-        <p>Sexta-feira 25-06-2022</p>
-        <span>
-          <button>15:00</button>
-          <button>19:00</button>
-        </span>
-      </div>
+
+      {filmInfo.days === undefined ? <h1>Carregando...</h1> : filmInfo.days.map(day => {
+        return <Section key={day.id} weekDay={day.weekday} date={day.date} showTimes={day.showtimes} />
+      })}
+
     </Container>
-    <StatusBar />
+    <StatusBar title={filmInfo.title} imageSrc={filmInfo.posterURL}/>
     </>
   )
 }
@@ -37,6 +50,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   
+  margin-bottom: 120px;
   font-family: 'Roboto';
 
   h1 {

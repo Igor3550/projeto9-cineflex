@@ -1,27 +1,29 @@
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
-const SuccesPage = () => {
+const SuccesPage = ({ requestInfo }) => {
+  const navigate = useNavigate();
+  const editedCPF = `${requestInfo.cpf.slice(0, 3)}.${requestInfo.cpf.slice(3, 6)}.${requestInfo.cpf.slice(6, 9)}-${requestInfo.cpf.slice(9)}`
   return (
     <Container>
       <Title>Pedido feito com sucesso!</Title>
       <InfoRequest>
         <div>
           <h1>Filme e sessão</h1>
-          <p>Enola Holmes</p>
-          <p>24/06/2022</p>
+          <p>{requestInfo.movieInfo.title}</p>
+          <p>{requestInfo.dateInfo.date} {requestInfo.section}</p>
         </div>
         <div>
           <h1>Ingressos</h1>
-          <p>Assento 15</p>
-          <p>Assento 16</p>
+          {requestInfo.selectedSeats.map(item => <p>Assento {item.name}</p>)}
         </div>
         <div>
           <h1>Comprador</h1>
-          <p>Nome: Joao</p>
-          <p>CPF: 123.456.789-12</p>
+          <p>Nome: {requestInfo.name}</p>
+          <p>CPF: {editedCPF}</p>
         </div>
       </InfoRequest>
-      <BackButton >Voltar para Home</BackButton>
+      <BackButton onClick={() => navigate('/')}>Voltar para Home</BackButton>
     </Container>
   )
 }
