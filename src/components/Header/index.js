@@ -7,8 +7,7 @@ const Header = ({ routerPage }) => {
   return (
     <Container>
       {(routerPage === 'home' || routerPage === 'succes') ? <></> :
-        //<span onClick={() => {navigate(-1)}}><ion-icon name="arrow-undo-circle-outline"></ion-icon></span>
-        <></>
+        <span onClick={() => {navigate(-1)}}><ion-icon name="arrow-undo-circle-outline"></ion-icon></span>
       }
       <h1>CINEFLEX</h1>
     </Container>
