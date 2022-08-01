@@ -3,11 +3,12 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-const Home = () => {
+const Home = ({setRouterPage}) => {
 
   const [listFilms, setListFilms] = useState([])
 
   useEffect(() => {
+    setRouterPage('home')
     const promisse = axios.get('https://mock-api.driven.com.br/api/v7/cineflex/movies')
     promisse.catch((error) => {
       console.log("Ouve um erro:", error)
@@ -30,12 +31,14 @@ const Home = () => {
 }
 
 const Container = styled.div`
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 90vh;
 
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow-y: scroll;
+  overflow-x: hidden;
 
   p {
     font-size: 24px;

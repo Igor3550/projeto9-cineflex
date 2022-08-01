@@ -4,19 +4,19 @@ import StatusBar from "../StatusBar";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 
-const SelectedFilmPage = () => {
+const SelectedFilmPage = ({ setRouterPage }) => {
 
   const [filmInfo, setFilmInfo] = useState({})
 
   const { filmId } = useParams();
 
   useEffect(() => {
+    setRouterPage('film')
     const promisse = axios.get(`https://mock-api.driven.com.br/api/v7/cineflex/movies/${filmId}/showtimes`);
     promisse.catch((error) => {
       console.log('Ouve um erro:', error);
     })
     promisse.then((res) => {
-      console.log(res.data);
       setFilmInfo(res.data);
     })
   }, [])
@@ -46,12 +46,12 @@ const SelectedFilmPage = () => {
 }
 
 const Container = styled.div`
-  height: 100%;
+  height: 80vh;
   display: flex;
   flex-direction: column;
   
-  margin-bottom: 120px;
   font-family: 'Roboto';
+  overflow-y: scroll;
 
   h1 {
     font-size: 24px;

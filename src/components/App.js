@@ -12,17 +12,36 @@ import GlobalStyle from './styles/GlobalStyle'
 function App() {
 
   const [requestInfo, setRequestInfo] = useState({})
+  const [routerPage, setRouterPage] = useState('')
 
   return (
     <>
       <GlobalStyle />
       <BrowserRouter>
-        <Header />
+        <Header routerPage={routerPage}/>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/filme/:filmId" element={<SelectedFilmPage />} />
-          <Route path="/sessao/:sectionId" element={<SectionPage requestInfo={requestInfo} setRequestInfo={setRequestInfo} />} />
-          <Route path="/sucesso" element={<SuccesPage requestInfo={requestInfo} setRequestInfo={setRequestInfo}/>} />
+          <Route path="/" element={<Home setRouterPage={setRouterPage}/>} />
+          <Route path="/filme/:filmId" element={<SelectedFilmPage setRouterPage={setRouterPage} />} />
+          <Route 
+            path="/sessao/:sectionId" 
+            element={
+              <SectionPage 
+                requestInfo={requestInfo} 
+                setRequestInfo={setRequestInfo} 
+                setRouterPage={setRouterPage}
+               />
+            } 
+          />
+          <Route 
+            path="/sucesso" 
+            element={
+              <SuccesPage 
+                requestInfo={requestInfo} 
+                setRequestInfo={setRequestInfo} 
+                setRouterPage={setRouterPage} 
+              />
+            } 
+          />
         </Routes>
       </BrowserRouter>
     </>

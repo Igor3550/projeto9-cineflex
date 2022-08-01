@@ -1,8 +1,15 @@
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ routerPage }) => {
+  const navigate = useNavigate();
+
   return (
     <Container>
+      {(routerPage === 'home' || routerPage === 'succes') ? <></> :
+        //<span onClick={() => {navigate(-1)}}><ion-icon name="arrow-undo-circle-outline"></ion-icon></span>
+        <></>
+      }
       <h1>CINEFLEX</h1>
     </Container>
   )
@@ -16,6 +23,23 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  top: 0;
+  left: 0;
+
+  position: relative;
+
+  span{
+    position: absolute;
+    left: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:first-child{
+      color: #E8833A;
+      font-size: 35px;
+    }
+  }
 
   h1 {
     font-size: 34px;

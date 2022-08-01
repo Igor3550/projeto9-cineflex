@@ -2,10 +2,11 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
+import InputMask from 'react-input-mask';
 
 import StatusBar from '../StatusBar';
 
-const SectionPage = ({ setRequestInfo }) => {
+const SectionPage = ({ setRequestInfo, setRouterPage }) => {
   const navigate = useNavigate();
 
   const [sectionInfo, setSectionInfo] = useState({});
@@ -18,6 +19,7 @@ const SectionPage = ({ setRequestInfo }) => {
   const { sectionId } = useParams();
 
   useEffect(() => {
+    setRouterPage('section');
     const promisse = axios.get(`https://mock-api.driven.com.br/api/v7/cineflex/showtimes/${sectionId}/seats`);
     promisse.catch((error) => {
       console.log('Ouve um erro', error)
@@ -46,7 +48,6 @@ const SectionPage = ({ setRequestInfo }) => {
           seatsList.push(clickedSeat)
         }
       }
-      console.log(seatsList);
       setSelectedSeats(seatsList)
     }else{
       alert('Esse assento não está disponível!')
@@ -58,7 +59,8 @@ const SectionPage = ({ setRequestInfo }) => {
 
     const ids = selectedSeats.map(item => item.id);
     const name = clientName;
-    const cpf = clientCPF;
+    const cpf = onlyNumber(clientCPF);
+    console.log(cpf)
 
     if(ids.length === 0){
       alert('Por favor, escolha os assentos!')
@@ -70,6 +72,7 @@ const SectionPage = ({ setRequestInfo }) => {
         name,
         cpf
       }
+      console.log(body);
       
       const promisse = axios.post('https://mock-api.driven.com.br/api/v7/cineflex/seats/book-many', body);
       promisse.catch(error => {
@@ -78,7 +81,6 @@ const SectionPage = ({ setRequestInfo }) => {
         navigate('/');
       })
       promisse.then(res => {
-        console.log(res.data);
         setRequestInfo({
           section: sectionInfo.name,
           selectedSeats, 
@@ -106,6 +108,18 @@ const SectionPage = ({ setRequestInfo }) => {
     return (
       <Seat color={color} selected={selected} onClick={() => handleSeatClick(seatInfo)} >{seatInfo.name}</Seat>
     )
+  }
+
+  function onlyNumber (str){
+    let newStr = '';
+    for (let i=0; i<str.length; i++){
+      let item = str[i];
+      if(!isNaN(item)){
+        newStr += item;
+      }
+    }
+
+    return newStr;
   }
 
   return (
@@ -145,12 +159,11 @@ const SectionPage = ({ setRequestInfo }) => {
               required
             />
             <label>CPF do comprador:</label>
-            <input 
-              type='number' 
+            <InputMask 
+              mask="999.999.999-99"
               placeholder="Digite seu CPF..." 
               value={clientCPF}
               onChange={(e) => seClientCPF(e.target.value)}
-              required
             />
             <button type="submit">Reservar assento(s)</button>
           </form>
@@ -213,11 +226,13 @@ const FormArea = styled.div`
 
 const Container = styled.div`
   width: 100%;
+  height: 80vh;
   
   display: flex;
   flex-direction: column;
   align-items: center;
 
+  overflow-y: scroll;
   font-family: 'Roboto';
 
   h1 {

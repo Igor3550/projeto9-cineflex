@@ -1,8 +1,14 @@
 import styled from "styled-components";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const SuccesPage = ({ requestInfo }) => {
+const SuccesPage = ({ requestInfo, setRouterPage }) => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setRouterPage('succes')
+  }, [])
+
   const editedCPF = `${requestInfo.cpf.slice(0, 3)}.${requestInfo.cpf.slice(3, 6)}.${requestInfo.cpf.slice(6, 9)}-${requestInfo.cpf.slice(9)}`
   return (
     <Container>
@@ -15,7 +21,7 @@ const SuccesPage = ({ requestInfo }) => {
         </div>
         <div>
           <h1>Ingressos</h1>
-          {requestInfo.selectedSeats.map(item => <p>Assento {item.name}</p>)}
+          {requestInfo.selectedSeats.map(item => <p key={item.id}>Assento {item.name}</p>)}
         </div>
         <div>
           <h1>Comprador</h1>
